@@ -6,9 +6,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
 // Importando express de la carpeta server
 const server_1 = __importDefault(require("./server/server"));
 const routes_1 = __importDefault(require("./routes/routes"));
+const users_routes_1 = __importDefault(require("./routes/users.routes"));
 const server = server_1.default.init(5000);
 server.app.use(routes_1.default);
-// MySql.instance;
+server.app.use('/users', users_routes_1.default);
+// bodyParser
+// server.app.use(bodyParser.urlencoded({ extended: false }))
+// server.app.use(bodyParser.json())
 server.start(() => {
-    console.log('Servido correndo en puerto 3000');
+    console.log('Servido correndo en puerto 5000');
 });
